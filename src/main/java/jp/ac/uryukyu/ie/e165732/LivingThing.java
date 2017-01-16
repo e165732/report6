@@ -6,43 +6,29 @@ public class LivingThing {
     private int attack;
     private boolean dead;
 
-    public LivingThing (String name, int hitPoint, int attack) {
+    public LivingThing (String name, int maximumHP, int attack) {
         this.name = name;
-        this.hitPoint = hitPoint;
+        this.hitPoint = maximumHP;
         this.attack = attack;
         dead = false;
-        System.out.printf("%sのHPは%d。攻撃力は%dです。\n", name, hitPoint, attack);
+        System.out.printf("%sのHPは%d。攻撃力は%dです。\n", name, maximumHP, attack);
     }
 
-    public void setDead(boolean dead){
-        this.dead = dead;
-    }
     public boolean isDead(){
         return  dead;
     }
 
-    public void setName(String name){
-        this.name = name;
-    }
     public String getName(){
         return name;
     }
 
-    public void setHitPoint(int hitPoint){ this.hitPoint = hitPoint; }
-    public int getHitPoint(){
-        return hitPoint;
-    }
+    public int getAttack() { return attack; }
 
-    public void setAttack(int attack){ hitPoint = attack;}
-    public int getAttack(){
-        return attack;
-    }
-
-    public void attack(LivingThing opponent){
+    public void attack(LivingThing e){
         if( !dead ) {
             int damage = (int) (Math.random() * attack);
-            System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, opponent.getName(), damage);
-            opponent.wounded(damage);
+            System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, e.getName(), damage);
+            e.wounded(damage);
         }
     }
 
@@ -50,6 +36,13 @@ public class LivingThing {
         hitPoint -= damage;
         if( hitPoint <= 0 ) {
             dead = true;
+            System.out.printf("モンスター%sは倒れた。 \n", name);
         }
     }
+    boolean getdead() { return dead; }
+
+    public void setdead(boolean dead) { this.dead = dead; }
+    int gethitPoint() { return hitPoint; }
+
+    public void sethitPoint(int hitPoint) { this.hitPoint = hitPoint; }
 }
