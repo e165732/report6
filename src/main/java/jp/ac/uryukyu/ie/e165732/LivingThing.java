@@ -8,7 +8,7 @@ public class LivingThing {
 
     public LivingThing (String name, int maximumHP, int attack) {
         this.name = name;
-        this.hitPoint = maximumHP;
+        hitPoint = maximumHP;
         this.attack = attack;
         dead = false;
         System.out.printf("%sのHPは%d。攻撃力は%dです。\n", name, maximumHP, attack);
@@ -25,7 +25,7 @@ public class LivingThing {
     public int getAttack() { return attack; }
 
     public void attack(LivingThing e){
-        if( !dead ) {
+        if(!dead) {
             int damage = (int) (Math.random() * attack);
             System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, e.getName(), damage);
             e.wounded(damage);

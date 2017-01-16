@@ -13,14 +13,13 @@ public class Hero extends LivingThing{
                 System.out.printf("%sの攻撃！、、、だが、%sは攻撃を回避した。 \n", getName(),e.getName());
             }else {
                 int judge = (int) (Math.random() * 10);
-                if (judge <= 2) {
+                if (judge <= 3) {
                     damage = damage * 2;
                     System.out.printf("%sの攻撃！会心の一撃！%sに%dのダメージを与えた！ \n", getName(), e.getName(), damage * 2);
                 }else {
                     System.out.printf("%sの攻撃！%sに%dのダメージを与えた。 \n", getName(), e.getName(), damage);
                 }
-
-                    e.wounded(damage);
+                e.wounded(damage);
             }
         }
     }
